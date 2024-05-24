@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Capped.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Pausable.sol";
 
-contract DynaLottery is Ownable, Pausable {
+contract GTCCampaign is Ownable, Pausable {
     event CooldownUpdated(uint256 newCooldown);
     event NewEntry(address indexed owner, uint256 bucket);
 
@@ -14,7 +14,7 @@ contract DynaLottery is Ownable, Pausable {
     uint256 public timeOffset;
     uint256 public totalCheckins;
     
-    mapping(address => uint256) private _lastMints;
+    mapping(address => uint256) private _lastCheckins;
     mapping(address => uint256) public entries;
 
     constructor(
@@ -32,10 +32,10 @@ contract DynaLottery is Ownable, Pausable {
 
         uint256 timeBucket = currentTs / cooldown;
         require(
-            _lastMints[account] < timeBucket,
+            _lastCheckins[account] < timeBucket,
             "Cooldown not passed yet"
         );
-        _lastMints[account] = timeBucket;
+        _lastCheckins[account] = timeBucket;
         totalCheckins++;
         entries[account]++;
 

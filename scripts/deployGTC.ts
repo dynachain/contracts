@@ -1,16 +1,16 @@
 import { ethers } from "hardhat";
 
-const deployArguments = require("./arguments/lottery");
+const deployArguments = require("./arguments/gtc");
 
 (async () => {
   try {
     const contract = await ethers.deployContract(
-      "DynaLottery",
+      "GTCCampaign",
       deployArguments
     );
     await contract.waitForDeployment();
 
-    console.log(`Lottery deployed to ${contract.target}`);
+    console.log(`GTCCampaign deployed to ${contract.target}`);
   } catch (e) {
     console.log(e);
   }
