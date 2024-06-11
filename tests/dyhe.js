@@ -16,7 +16,7 @@ describe("DYHE", function () {
     const [deployer, opWallet] = await ethers.getSigners();
     const nft = await ethers.deployContract(
       "DynaHealth",
-      [deployer.address, "0xa5e8b669588E24d9f4F7a113E1BDCcb26B689337"],
+      [deployer.address, opWallet.address],
       {}
     );
 
