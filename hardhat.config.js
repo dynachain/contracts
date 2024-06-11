@@ -7,7 +7,7 @@ require("@nomicfoundation/hardhat-verify");
 
 module.exports = {
   solidity: {
-    version: "0.8.20",
+    version: "0.8.21",
     settings: {
       optimizer: {
         enabled: true,
@@ -16,7 +16,7 @@ module.exports = {
     },
   },
   etherscan: {
-    apiKey: process.env.ETHERSCAN_API_KEY,
+    apiKey: process.env.BSCSCAN_API_KEY,
     customChains: [
       {
         network: "opbnbtest",
@@ -25,6 +25,15 @@ module.exports = {
           apiURL:
             `https://open-platform.nodereal.io/${process.env.ETHERSCAN_API_KEY}/op-bnb-testnet/contract/`,
           browserURL: "https://testnet.opbnbscan.com/",
+        },
+      },
+      {
+        network: "opbnb",
+        chainId: 204,
+        urls: {
+          apiURL:
+            `https://open-platform.nodereal.io/${process.env.ETHERSCAN_API_KEY}/op-bnb-mainnet/contract/`,
+          browserURL: "https://opbnbscan.com/",
         },
       }
     ],
@@ -39,6 +48,18 @@ module.exports = {
     bsctest: {
       url: "https://data-seed-prebsc-1-s1.bnbchain.org:8545",
       chainId: 97,
+      gasPrice: 20000000000,
+      accounts: [process.env.PRIVATE_KEY],
+    },
+    opbnb: {
+      url: "https://opbnb-mainnet-rpc.bnbchain.org/",
+      chainId: 204,
+      accounts: [process.env.PRIVATE_KEY],
+      gasPrice: 20000000000,
+    },
+    bsc: {
+      url: `https://bsc-dataseed.bnbchain.org/`,
+      chainId: 56,
       gasPrice: 20000000000,
       accounts: [process.env.PRIVATE_KEY],
     },

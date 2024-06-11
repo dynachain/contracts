@@ -1,1 +1,1 @@
-module.exports = ["DYNA COIN", "DYNA", "1000000000000000000000000000", process.env.TREASURY];
+module.exports = ["DYNACHAIN", "DYNA", "1000000000000000000000000000", process.env.TREASURY];
