@@ -9,7 +9,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 import "@openzeppelin/contracts/utils/cryptography/MessageHashUtils.sol";
 
-contract DynaHealth is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
+contract TheFoundingStone is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
     address private _opWallet;
     using ECDSA for bytes32;
     using MessageHashUtils for bytes32;
@@ -17,7 +17,7 @@ contract DynaHealth is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
     constructor(
         address initialOwner,
         address initialOpWallet
-    ) ERC721("DynaHealth", "DYHE") Ownable(initialOwner) {
+    ) ERC721("The Founding Stone", "TFS") Ownable(initialOwner) {
         _opWallet = initialOpWallet;
     }
 
