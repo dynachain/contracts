@@ -1,29 +1,21 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.21;
 
-import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-contract Airdrop is Ownable {
-    address public tokenAddr;
-
-    constructor(
-        address _tokenAddr,
-        address initialOwner
-    ) Ownable(initialOwner) {
-        tokenAddr = _tokenAddr;
-    }
+contract Airdrop {
+    constructor() {}
 
     function dropTokens(
+        address _token,
         address[] memory _recipients,
         uint256[] memory _amounts
-    ) public onlyOwner returns (bool) {
-        address msgSender = _msgSender();
+    ) public returns (bool) {
         for (uint i = 0; i < _recipients.length; i++) {
             require(_recipients[i] != address(0));
             require(
-                IERC20(tokenAddr).transferFrom(
-                    msgSender,
+                IERC20(_token).transferFrom(
+                    msg.sender,
                     _recipients[i],
                     _amounts[i]
                 )
@@ -31,9 +23,5 @@ contract Airdrop is Ownable {
         }
 
         return true;
-    }
-
-    function updateTokenAddress(address newTokenAddr) public onlyOwner {
-        tokenAddr = newTokenAddr;
     }
 }
