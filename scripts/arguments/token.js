@@ -1,0 +1,1 @@
+module.exports = ["DYNACHAIN", "DYNA", "500000000000000000000000000", process.env.TREASURY];
